@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "robsmod:blocks/sed_block_chalk",
+        "particle": "blocks/wool_colored_blue"
+    }
+}

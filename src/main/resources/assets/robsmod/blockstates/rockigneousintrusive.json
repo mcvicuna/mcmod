@@ -1,0 +1,7 @@
+{
+	"variants": {
+       "igin_type=diorite": { "model": "robsmod:igin_block_diorite"},
+       "igin_type=gabbro": { "model": "robsmod:igin_block_gabbro"},
+       "igin_type=granite": { "model": "robsmod:igin_block_granite"}
+    }
+}

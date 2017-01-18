@@ -1,0 +1,16 @@
+[
+{
+  "modid": "robsmod",
+  "name": "Robs Mod",
+  "description": "A Mod By Rob.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ProgrammasaurusRex"],
+  "credits": "The Forge and FML guys, for making this example",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

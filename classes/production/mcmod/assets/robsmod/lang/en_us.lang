@@ -1,0 +1,12 @@
+itemGroup.robsmod=Rob's Mod
+
+tile.rockSedimentary.name=Sedimentary Rock
+tile.rockSedimentary.chalk.name=Chalk
+tile.rockSedimentary.chert.name=Chert
+tile.rockSedimentary.claystone.name=Claystone
+tile.rockSedimentary.conglomerate.name=Conglomerate
+
+tile.rockIgneousIntrusive.name=Igneous Intrusive Rock
+tile.rockIgneousIntrusive.diorite.name=Diorite
+tile.rockIgneousIntrusive.gabbro.name=Gabbro
+tile.rockIgneousIntrusive.granite.name=Granite

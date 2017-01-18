@@ -1,0 +1,8 @@
+{
+	"variants": {
+       "sed_type=chalk": { "model": "robsmod:sed_block_chalk"},
+       "sed_type=chert": { "model": "robsmod:sed_block_chert"},
+       "sed_type=claystone": { "model": "robsmod:sed_block_claystone"},
+       "sed_type=conglomerate": { "model": "robsmod:sed_block_conglomerate"}
+    }
+}
