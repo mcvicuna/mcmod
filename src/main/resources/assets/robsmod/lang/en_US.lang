@@ -1,0 +1,20 @@
+itemGroup.robsmod=Rob's Mod
+
+tile.ore_copper.name=Copper Ore
+
+tile.rock_sedimentary.name=Sedimentary Rock
+tile.rock_sedimentary.chalk.name=Chalk
+tile.rock_sedimentary.chert.name=Chert
+tile.rock_sedimentary.claystone.name=Claystone
+tile.rock_sedimentary.conglomerate.name=Conglomerate
+
+tile.rock_igneous_intrusive.name=Igneous Intrusive Rock
+tile.rock_igneous_intrusive.diorite.name=Diorite
+tile.rock_igneous_intrusive.gabbro.name=Gabbro
+tile.rock_igneous_intrusive.granite.name=Granite
+
+item.boulder_gabbro.name=Gabbro Boulder
+item.boulder_claystone.name=Claystone Boulder
+item.sharp_rock.name=Sharp Rock
+item.gravel_pile.name=Pile of Gravel
+item.rock.name=Rock

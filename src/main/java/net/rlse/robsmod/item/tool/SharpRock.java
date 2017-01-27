@@ -8,12 +8,12 @@ import net.minecraft.item.ItemStack;
 import net.rlse.robsmod.RobsMod;
 import net.rlse.robsmod.item.IItemModelProvider;
 
-public class KnappingRock extends ItemPickaxe 
+public class SharpRock extends ItemPickaxe 
 	implements IItemModelProvider {
 
 	private String name;
 	
-	public KnappingRock(ToolMaterial mat, String name) {
+	public SharpRock(ToolMaterial mat, String name) {
 		super(mat);
 		setUnlocalizedName(name);
 		setRegistryName(name);

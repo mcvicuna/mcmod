@@ -33,6 +33,6 @@ public class ModRecipes {
 			}
 		};
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.knappingRock), ModItems.rock, ModItems.rock);
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.sharpRock), ModItems.rock, ModItems.rock);
 	}
 }

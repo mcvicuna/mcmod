@@ -22,7 +22,7 @@ public class BlockIgneousIntrusive extends BlockBase {
 	public static final PropertyEnum<EnumIgneousIntrusive> IGNEOUSINTRUSIVE_TYPE = PropertyEnum.create("igin_type", BlockIgneousIntrusive.EnumIgneousIntrusive.class);
 
 	public BlockIgneousIntrusive() {
-		super("rockigneousintrusive", Material.ROCK, 3f, 10f);
+		super("rock_igneous_intrusive", Material.ROCK, 3f, 10f);
 	}
 
 	@Override

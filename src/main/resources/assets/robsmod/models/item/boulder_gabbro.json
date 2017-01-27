@@ -1,6 +1,6 @@
 {
 	"parent": "item/handheld",
 	"textures": {
-		"layer0": "robsmod:items/knappingRock"
+		"layer0": "robsmod:items/boulder_gabbro"
 	}
 }

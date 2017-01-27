@@ -21,7 +21,7 @@ public class BlockSedimentary extends BlockBase {
 	public static final PropertyEnum<EnumSedimentary> SEDIMENTARY_TYPE = PropertyEnum.create("sed_type", BlockSedimentary.EnumSedimentary.class);
 
 	public BlockSedimentary() {
-		super("rocksedimentary", Material.ROCK, 3f, 10f);
+		super("rock_sedimentary", Material.ROCK, 3f, 10f);
 	}
 
 	@Override

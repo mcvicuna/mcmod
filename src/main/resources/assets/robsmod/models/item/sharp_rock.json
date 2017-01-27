@@ -1,6 +1,6 @@
 {
 	"parent": "item/handheld",
 	"textures": {
-		"layer0": "robsmod:items/gravelPile"
+		"layer0": "robsmod:items/sharp_rock"
 	}
 }

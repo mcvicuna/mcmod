@@ -16,7 +16,7 @@ public class ModBlocks {
 	public static ItemBlockIgneousIntrusive itemBlockIgneousIntrusive;
 
 	public static void init() {
-		oreCopper = new BlockOre("orecopper", "orecopper");
+		oreCopper = new BlockOre("ore_copper", "ore_copper");
 		register(oreCopper);
 		
 		// For these, skip the local register method because it ignores meta, the proxy will register the item models

@@ -3,12 +3,12 @@ package net.rlse.robsmod.item;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.rlse.robsmod.item.tool.KnappingRock;
+import net.rlse.robsmod.item.tool.SharpRock;
 
 public class ModItems {
 
 	public static ItemRock rock;
-	public static KnappingRock knappingRock;
+	public static SharpRock sharpRock;
 	
 	public static ItemBoulderGabbro boulderGabbro;
 	public static ItemBoulderClaystone boulderClaystone;
@@ -16,7 +16,7 @@ public class ModItems {
 	
 	public static void init() {
 		rock = register(new ItemRock("rock"));
-		knappingRock = register(new KnappingRock(ToolMaterial.WOOD, "knappingrock"));
+		sharpRock = register(new SharpRock(ToolMaterial.WOOD, "sharp_rock"));
 		
 		boulderGabbro = register(new ItemBoulderGabbro());
 		boulderClaystone = register(new ItemBoulderClaystone());
