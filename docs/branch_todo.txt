@@ -1,0 +1,18 @@
+Add Plant Fiber item
+Add Kindling item
+
+@TODO Add Primitive Bed item
+@TODO Add Pile of Leaves item
+@TODO Make dirt hand-diggable again
+@TODO Modify log harvest drops:
+@TODO   If by hand, drop nothing
+@TODO   If by non-axe tool, drop 2-8 sticks and 1-4 plant fiber
+@TODO   If by axe, drop log as normal
+@TODO Modify drop for oak leaves to be a random combination of piles of leaves, sticks, apples and oak saplings
+
+Remove vanilla axe recipes
+Add recipe (stick + stick + plant fiber -> kindling)
+Add recipe (stick + plant fiber + sharp rock -> stone axe)
+Add recipe (stick + [sharp rock] -> plant fiber) where [ ] indicates a non-consumed but damage-added item
+
+@TODO Add recipe (plant fiber x9 -> primitive bed)

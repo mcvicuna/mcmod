@@ -23,7 +23,7 @@ public class EventBreakSpeed {
 		
 		if (event.getEntityPlayer() != null) {
 			ItemStack held = event.getEntityPlayer().getHeldItemMainhand();
-			if (held == null) {
+			if (held.getItem() == ItemStack.EMPTY) {
 				Material blockMat = event.getState().getMaterial();
 				//if (blockMat.isToolNotRequired()) {
 				if (blockMat == Material.GROUND || blockMat == Material.GRASS) {
@@ -43,6 +43,7 @@ public class EventBreakSpeed {
 					}
 				}
 				System.out.println("Zeroing breakspeed for non-effective tool (classes "+heldToolClasses+")");
+				System.out.println("Held was ("+held+") ("+held.getUnlocalizedName()+")");
 			}
 		}
 		
