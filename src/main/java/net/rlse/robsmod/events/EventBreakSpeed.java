@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialLogic;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.WorldServer;
@@ -23,14 +25,16 @@ public class EventBreakSpeed {
 		
 		if (event.getEntityPlayer() != null) {
 			ItemStack held = event.getEntityPlayer().getHeldItemMainhand();
-			if (held.getItem() == ItemStack.EMPTY) {
+			if (held == null || !held.getItem().isItemTool(held)) {
 				Material blockMat = event.getState().getMaterial();
-				//if (blockMat.isToolNotRequired()) {
-				if (blockMat == Material.GROUND || blockMat == Material.GRASS) {
+				if (blockMat == Material.GROUND || blockMat == Material.GRASS
+						|| blockMat == Material.CLAY || blockMat == Material.SAND
+						|| blockMat == Material.LEAVES
+						|| blockMat instanceof MaterialLogic) { // TODO I don't like this, but it's the only way I've discovered to detect a variety of hand-diggable blocks (tall grass, flowers and vines)
 					event.setNewSpeed(0.05f);
 					return;
 				}
-				System.out.println("Zeroing, no item held vs non-diggable material");
+				System.out.println("Zeroing, held item is not a tool vs non-hand-diggable material ["+blockMat+"]");
 			} else {
 				String[] toolClasses = {"pickaxe", "shovel", "axe"};
 				Set<String> heldToolClasses = held.getItem().getToolClasses(held);

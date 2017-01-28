@@ -1,0 +1,6 @@
+{
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "robsmod:items/plant_fiber_bundle"
+	}
+}

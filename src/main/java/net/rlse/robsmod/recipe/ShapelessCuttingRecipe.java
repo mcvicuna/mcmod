@@ -12,9 +12,11 @@ import scala.actors.threadpool.Arrays;
 
 public class ShapelessCuttingRecipe extends ShapelessRecipes {
 
+	// TODO figure out where random should be, and why it's needed in the call to attemptDamageItem
 	private Random random;
 	
 	public ShapelessCuttingRecipe(ItemStack output, ItemStack... input) {
+		// TODO Find out if we can fix the type-related warning with asList, or add @SuppressWarnings
 		super(output, Arrays.asList(input));
 	}
 	

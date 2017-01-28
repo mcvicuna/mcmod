@@ -8,7 +8,9 @@ import net.rlse.robsmod.item.tool.SharpRock;
 public class ModItems {
 
 	public static ItemRock rock;
+	public static ItemLeafPile leafPile;
 	public static ItemPlantFiber plantFiber;
+	public static ItemPlantFiberBundle plantFiberBundle;
 	public static ItemKindling kindling;
 	
 	public static ItemBoulderGabbro boulderGabbro;
@@ -19,7 +21,9 @@ public class ModItems {
 	
 	public static void init() {
 		rock = register(new ItemRock("rock"));
+		leafPile = register(new ItemLeafPile("leaf_pile"));
 		plantFiber = register(new ItemPlantFiber("plant_fiber"));
+		plantFiberBundle = register(new ItemPlantFiberBundle("plant_fiber_bundle"));
 		kindling = register(new ItemKindling("kindling"));
 		
 		boulderGabbro = register(new ItemBoulderGabbro());
