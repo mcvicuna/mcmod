@@ -4,6 +4,7 @@ Add Plant Fiber item
 Add Kindling item
 Add Plant Fiber Bundle item
 Add Leaf Pile item
+Add beaten path block
 
 @TODO Add Primitive Bed item - need to extend BedBlock? figure it out...
 

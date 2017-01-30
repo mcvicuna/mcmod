@@ -13,6 +13,8 @@ tile.rock_igneous_intrusive.diorite.name=Diorite
 tile.rock_igneous_intrusive.gabbro.name=Gabbro
 tile.rock_igneous_intrusive.granite.name=Granite
 
+tile.path_beaten.name=Beaten Path
+
 item.boulder_gabbro.name=Gabbro Boulder
 item.boulder_claystone.name=Claystone Boulder
 item.sharp_rock.name=Sharp Rock
