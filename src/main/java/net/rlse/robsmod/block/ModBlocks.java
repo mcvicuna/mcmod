@@ -1,6 +1,7 @@
 package net.rlse.robsmod.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockGrassPath;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.rlse.robsmod.item.IItemModelProvider;

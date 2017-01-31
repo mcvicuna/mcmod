@@ -1,7 +1,6 @@
 {
-    "parent": "block/cube_top",
+    "parent": "block/grass_path",
     "textures": {
-        "top": "robsmod:blocks/path_beaten_cross",
-        "side": "blocks/dirt"
+        "top": "robsmod:blocks/path_beaten_cross"
     }
 }
