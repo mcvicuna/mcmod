@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"normal": {
+			"model": "robsmod:civcore_well"
+		},
+		"inventory": {
+			"model": "robsmod:civcore_well"
+		}
+	}
+}
