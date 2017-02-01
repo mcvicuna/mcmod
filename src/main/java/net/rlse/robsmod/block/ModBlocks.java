@@ -2,6 +2,7 @@ package net.rlse.robsmod.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrassPath;
+import net.minecraft.block.BlockSign;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.rlse.robsmod.item.IItemModelProvider;
@@ -16,6 +17,8 @@ public class ModBlocks {
 	public static BlockIgneousIntrusive blockIgneousIntrusive;
 	public static ItemBlockIgneousIntrusive itemBlockIgneousIntrusive;
 	public static BlockPathBeaten blockPathBeaten;
+	public static BlockWorkZoneFarmSign blockWZSignFarm;
+	public static BlockWorkZoneLumberSign blockWZSignLumber;
 
 	/**
 	 * Gotchas
@@ -29,6 +32,12 @@ public class ModBlocks {
 		
 		blockPathBeaten = new BlockPathBeaten();
 		register(blockPathBeaten);
+		
+		blockWZSignFarm = new BlockWorkZoneFarmSign();
+		register(blockWZSignFarm);
+		
+		blockWZSignLumber = new BlockWorkZoneLumberSign();
+		register(blockWZSignLumber);
 		
 		// For these, skip the local register method because it ignores meta, the proxy will register the item models
 	    blockSedimentary = new BlockSedimentary();
