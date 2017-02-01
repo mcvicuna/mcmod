@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_top",
+    "textures": {
+        "top": "robsmod:blocks/civcore_well_top",
+        "side": "blocks/cobblestone"
+    }
+}

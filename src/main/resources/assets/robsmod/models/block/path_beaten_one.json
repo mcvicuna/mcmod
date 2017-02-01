@@ -1,0 +1,6 @@
+{
+    "parent": "block/grass_path",
+    "textures": {
+        "top": "robsmod:blocks/path_beaten_one"
+    }
+}

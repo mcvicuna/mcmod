@@ -14,10 +14,32 @@ public class ModBlocks {
 	public static ItemBlockSedimentary itemBlockSedimentary;
 	public static BlockIgneousIntrusive blockIgneousIntrusive;
 	public static ItemBlockIgneousIntrusive itemBlockIgneousIntrusive;
+	public static BlockPathBeaten blockPathBeaten;
+	public static BlockWorkZoneFarmSign blockWZSignFarm;
+	public static BlockWorkZoneLumberSign blockWZSignLumber;
+	public static BlockCivCoreWell blockCivCoreWell;
 
+	/**
+	 * Gotchas
+	 * 
+	 * Variants need to have their properties in alphanum order within the quotes in the blockstate json file
+	 */
+	
 	public static void init() {
 		oreCopper = new BlockOre("ore_copper", "ore_copper");
 		register(oreCopper);
+		
+		blockPathBeaten = new BlockPathBeaten();
+		register(blockPathBeaten);
+		
+		blockWZSignFarm = new BlockWorkZoneFarmSign();
+		register(blockWZSignFarm);
+		
+		blockWZSignLumber = new BlockWorkZoneLumberSign();
+		register(blockWZSignLumber);
+		
+		blockCivCoreWell = new BlockCivCoreWell();
+		register(blockCivCoreWell);
 		
 		// For these, skip the local register method because it ignores meta, the proxy will register the item models
 	    blockSedimentary = new BlockSedimentary();

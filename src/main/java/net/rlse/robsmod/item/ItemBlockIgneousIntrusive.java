@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.rlse.robsmod.block.BlockIgneousIntrusive.EnumIgneousIntrusive;
-import net.rlse.robsmod.block.BlockSedimentary.EnumSedimentary;
 
 public class ItemBlockIgneousIntrusive extends ItemBlock {
 	

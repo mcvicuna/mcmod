@@ -13,8 +13,17 @@ tile.rock_igneous_intrusive.diorite.name=Diorite
 tile.rock_igneous_intrusive.gabbro.name=Gabbro
 tile.rock_igneous_intrusive.granite.name=Granite
 
+tile.path_beaten.name=Beaten Path
+tile.wz_sign_farm.name=Crop Farm Marker
+tile.wz_sign_lumber.name=Lumber Farm Marker
+tile.civcore_well.name=Village Well
+
 item.boulder_gabbro.name=Gabbro Boulder
 item.boulder_claystone.name=Claystone Boulder
 item.sharp_rock.name=Sharp Rock
 item.gravel_pile.name=Pile of Gravel
 item.rock.name=Rock
+item.plant_fiber.name=Plant Fiber
+item.leaf_pile.name=Leaf Pile
+item.plant_fiber_bundle.name=Plant Fiber Bundle
+item.kindling.name=Kindling

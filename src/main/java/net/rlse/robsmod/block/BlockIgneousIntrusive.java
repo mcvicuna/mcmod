@@ -1,7 +1,5 @@
 package net.rlse.robsmod.block;
 
-import java.util.List;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -16,7 +14,6 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.rlse.robsmod.block.BlockSedimentary.EnumSedimentary;
 
 public class BlockIgneousIntrusive extends BlockBase {
 	public static final PropertyEnum<EnumIgneousIntrusive> IGNEOUSINTRUSIVE_TYPE = PropertyEnum.create("igin_type", BlockIgneousIntrusive.EnumIgneousIntrusive.class);
