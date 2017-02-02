@@ -8,7 +8,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
-public abstract class BlockPathBase extends BlockBase implements ICivPath {
+public abstract class BlockPathBase extends BlockBase implements ICivGraphEdge {
 
 	public static final PropertyBool CONNECTED_NORTH = PropertyBool.create("north");
 	public static final PropertyBool CONNECTED_SOUTH = PropertyBool.create("south");
@@ -46,7 +46,7 @@ public abstract class BlockPathBase extends BlockBase implements ICivPath {
 	protected boolean isAdjacentBlockPath(IBlockAccess world, BlockPos pos, EnumFacing facing) {
 		BlockPos facingPos = pos.offset(facing);
 		IBlockState state = world.getBlockState(facingPos);
-		if (state.getBlock() instanceof ICivPath) {
+		if (state.getBlock() instanceof ICivGraphEdge) {
 			return true;
 		}
 		
@@ -54,13 +54,13 @@ public abstract class BlockPathBase extends BlockBase implements ICivPath {
 		if (world.isAirBlock(facingPos)) {
 			// On-level is air, check down
 			state = world.getBlockState(facingPos.offset(EnumFacing.DOWN));
-			if (state.getBlock() instanceof ICivPath) {
+			if (state.getBlock() instanceof ICivGraphEdge) {
 				return true;
 			}
 		} else {
 			// On-level is not air, check up
 			state = world.getBlockState(facingPos.offset(EnumFacing.UP));
-			if (state.getBlock() instanceof ICivPath) {
+			if (state.getBlock() instanceof ICivGraphEdge) {
 				return true;
 			}
 		}
