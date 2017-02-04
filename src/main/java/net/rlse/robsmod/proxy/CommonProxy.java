@@ -7,12 +7,14 @@ import net.rlse.robsmod.events.EventBreakSpeed;
 import net.rlse.robsmod.events.EventHarvestCheck;
 import net.rlse.robsmod.item.ModItems;
 import net.rlse.robsmod.recipe.ModRecipes;
+import net.rlse.robsmod.tileentity.ModTileEntities;
 
 public class CommonProxy {
 	
 	public void preInit() {
 		ModBlocks.init();
 		ModItems.init();
+		ModTileEntities.init();
 		
 		MinecraftForge.EVENT_BUS.register(new EventBreakSpeed());
 		MinecraftForge.EVENT_BUS.register(new EventHarvestCheck());
