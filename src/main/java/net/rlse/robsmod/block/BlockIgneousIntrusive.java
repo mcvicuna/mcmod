@@ -52,7 +52,7 @@ public class BlockIgneousIntrusive extends BlockBase {
 	}
 	
 	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing blockFaceClickedOn, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing blockFaceClickedOn, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 	    EnumIgneousIntrusive igInType = EnumIgneousIntrusive.Values()[meta];
 	    return this.getDefaultState().withProperty(IGNEOUSINTRUSIVE_TYPE, igInType);
 	}

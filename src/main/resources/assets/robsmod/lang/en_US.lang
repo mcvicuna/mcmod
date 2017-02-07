@@ -27,3 +27,5 @@ item.plant_fiber.name=Plant Fiber
 item.leaf_pile.name=Leaf Pile
 item.plant_fiber_bundle.name=Plant Fiber Bundle
 item.kindling.name=Kindling
+
+container.te_generic_inventory=This Holds Things

@@ -2,10 +2,13 @@ package net.rlse.robsmod.proxy;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.rlse.robsmod.RobsMod;
 import net.rlse.robsmod.block.ModBlocks;
 import net.rlse.robsmod.events.EventBreakSpeed;
 import net.rlse.robsmod.events.EventHarvestCheck;
 import net.rlse.robsmod.item.ModItems;
+import net.rlse.robsmod.network.RobsModGuiHandler;
 import net.rlse.robsmod.recipe.ModRecipes;
 import net.rlse.robsmod.tileentity.ModTileEntities;
 
@@ -22,6 +25,8 @@ public class CommonProxy {
 	
 	public void init() {
 		ModRecipes.init();
+		
+		NetworkRegistry.INSTANCE.registerGuiHandler(RobsMod.instance, new RobsModGuiHandler());
 	}
 	
 	public void postInit() {

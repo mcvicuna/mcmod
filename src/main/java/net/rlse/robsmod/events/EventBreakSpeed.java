@@ -1,14 +1,10 @@
 package net.rlse.robsmod.events;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialLogic;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -25,7 +21,7 @@ public class EventBreakSpeed {
 		
 		if (event.getEntityPlayer() != null) {
 			ItemStack held = event.getEntityPlayer().getHeldItemMainhand();
-			if (held == null || !held.getItem().isItemTool(held)) {
+			if (held == null || held.getItem().getToolClasses(held).isEmpty()) {
 				Material blockMat = event.getState().getMaterial();
 				if (blockMat == Material.GROUND || blockMat == Material.GRASS
 						|| blockMat == Material.CLAY || blockMat == Material.SAND

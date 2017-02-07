@@ -1,16 +1,24 @@
 package net.rlse.robsmod.tileentity;
 
-import net.minecraft.inventory.IInventory;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 
-public class TEFarmSign extends TileEntity
-	implements ITickable, IInventory {
+public class TEFarmSign extends TileEntityContainer
+	implements ITickable {
 
+	public TEFarmSign() {
+		super(9);
+		setCustomName("Farm Work Zone");
+	}
+
+	/**
+	 * ITickable impl
+	 */
 	@Override
 	public void update() {
-		if (this.worldObj.isRemote) {
-			System.out.println("Hello, I'm a TileEntity!");
+		/*
+		if (this.world.isRemote) {
+			System.out.println("Hello, I'm a TEFarmSign!");
 		}
+		*/
 	}
 }

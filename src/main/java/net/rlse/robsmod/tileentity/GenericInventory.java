@@ -2,147 +2,194 @@ package net.rlse.robsmod.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 
-public class GenericInventory
-	implements IInventory {
+public class GenericInventory implements IInventory {
 
-	private ItemStack[] inventory;
-	private String customName;
+	private TileEntityContainer owningEntity;
+	private NonNullList<ItemStack> inventory;
 	private int slots;
-	
-	public GenericInventory(int slots) {
+
+	public GenericInventory(TileEntityContainer te, int slots) {
+		owningEntity = te;
 		this.slots = slots;
-		inventory = new ItemStack[this.slots];
-		for (int x=0; x<this.slots; x++) {
-			inventory[x] = ItemStack.field_190927_a;
-		}
+		inventory = NonNullList.<ItemStack>withSize(slots, ItemStack.EMPTY);
 	}
-	
+
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return owningEntity.getName();
 	}
 
 	@Override
 	public boolean hasCustomName() {
-		// TODO Auto-generated method stub
-		return false;
+		return owningEntity.hasCustomName();
 	}
 
 	@Override
 	public ITextComponent getDisplayName() {
-		// TODO Auto-generated method stub
-		return null;
+		return owningEntity.getDisplayName();
 	}
 
 	@Override
 	public int getSizeInventory() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean func_191420_l() {
-		// TODO Auto-generated method stub
-		return false;
+		return slots;
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if (index < 0 || index >= getSizeInventory()) {
+			return ItemStack.EMPTY;
+		}
+
+		return inventory.get(index);
 	}
 
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
-		// TODO Auto-generated method stub
-		return null;
+		if (getStackInSlot(index) != ItemStack.EMPTY) {
+			ItemStack itemStack;
+
+			if (getStackInSlot(index).getCount() <= count) {
+				itemStack = getStackInSlot(index);
+				setInventorySlotContents(index, ItemStack.EMPTY);
+				markDirty();
+				return itemStack;
+			} else {
+				itemStack = getStackInSlot(index).splitStack(count);
+
+				if (getStackInSlot(index).getCount() <= 0) {
+					setInventorySlotContents(index, ItemStack.EMPTY);
+				} else {
+					setInventorySlotContents(index, getStackInSlot(index));
+				}
+
+				markDirty();
+				return itemStack;
+			}
+		} else {
+			return ItemStack.EMPTY;
+		}
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		ItemStack stack = getStackInSlot(index);
+		setInventorySlotContents(index, ItemStack.EMPTY);
+		return stack;
 	}
 
 	@Override
 	public void setInventorySlotContents(int index, ItemStack stack) {
-		// TODO Auto-generated method stub
-		
+		if (index < 0 || index >= getSizeInventory()) {
+			return;
+		}
+
+		if (stack != ItemStack.EMPTY && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
+		}
+
+		// Convert zero-count stacks to EMPTY 
+		if (stack != ItemStack.EMPTY && stack.getCount() == 0) {
+			stack = ItemStack.EMPTY;
+		}
+
+		inventory.set(index, stack);
+		markDirty();
 	}
 
 	@Override
 	public int getInventoryStackLimit() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 64;
 	}
 
 	@Override
 	public void markDirty() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
-		// TODO Auto-generated method stub
-		return false;
+		owningEntity.markDirty();
 	}
 
 	@Override
 	public void openInventory(EntityPlayer player) {
-		// TODO Auto-generated method stub
-		
+		// Not normally used
 	}
 
 	@Override
 	public void closeInventory(EntityPlayer player) {
-		// TODO Auto-generated method stub
-		
+		// Not normally used
 	}
 
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		// TODO Auto-generated method stub
-		return false;
+		// Allow everything
+		return true;
 	}
 
+	/*
+	 * getField, setField, getFieldCount are used for special client/server
+	 * sync, not used here
+	 */
 	@Override
 	public int getField(int id) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void setField(int id, int value) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public int getFieldCount() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		for (int x = 0; x < getSizeInventory(); x++) {
+			setInventorySlotContents(x, ItemStack.EMPTY);
+		}
 	}
 
 	public int getSlotCount() {
 		return slots;
 	}
-	
+
 	protected void setSlotCount(int slots) {
 		// TODO Logic for resizing inventory array
 		// int oldSlots = this.slots;
 		// make new array, copy stacks
 		// drop excess stacks as ItemEntities
 		this.slots = slots;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		for (ItemStack itemStack : inventory) {
+			if (!itemStack.isEmpty()) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	@Override
+	public boolean isUsableByPlayer(EntityPlayer player) {
+		return (owningEntity.getWorld().getTileEntity(owningEntity.getPos()) == owningEntity)
+				&& (player.getDistanceSq(owningEntity.getPos().add(0.5, 0.5, 0.5)) <= 64);
+	}
+
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
+		return ItemStackHelper.saveAllItems(nbt, inventory);
+	}
+	
+	public void readFromNBT(NBTTagCompound nbt) {
+		ItemStackHelper.loadAllItems(nbt, inventory);
 	}
 }

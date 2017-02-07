@@ -52,7 +52,7 @@ public class BlockSedimentary extends BlockBase {
 	}
 	
 	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing blockFaceClickedOn, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing blockFaceClickedOn, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 	    EnumSedimentary sedType = EnumSedimentary.Values()[meta];
 	    return this.getDefaultState().withProperty(SEDIMENTARY_TYPE, sedType);
 	}

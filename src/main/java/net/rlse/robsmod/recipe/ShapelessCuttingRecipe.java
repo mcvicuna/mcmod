@@ -30,7 +30,7 @@ public class ShapelessCuttingRecipe extends ShapelessRecipes {
 	
 	@Override
 	public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inventoryCrafting) {
-		NonNullList<ItemStack> retList = NonNullList.<ItemStack>func_191196_a();
+		NonNullList<ItemStack> retList = NonNullList.<ItemStack>create();
 		
 		ItemStack[] remainingItems = new ItemStack[inventoryCrafting.getSizeInventory()];
 		

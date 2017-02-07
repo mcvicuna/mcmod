@@ -5,16 +5,11 @@ Add Kindling item
 Add Plant Fiber Bundle item
 Add Leaf Pile item
 Add beaten path block
-
-@TODO Add Primitive Bed item - need to extend BedBlock? figure it out...
-
 Make dirt hand-diggable again (added sand, leaves, clay, tall grass, flowers, carpets, possibly others)
-
 Modify log harvest drops:
   If by hand, drop nothing __changing this to same as non-axe tool__
   If by non-axe tool, drop 2-8 sticks and 1-4 plant fiber
   If by axe, drop log as normal
-
 Modify drop for oak leaves to be a random combination of piles of leaves, sticks, apples and oak saplings
   -90% chance for Leaf Pile
   -50% chance for stick
@@ -26,7 +21,9 @@ Add recipe (stick + [sharp rock] -> plant fiber) where [ ] indicates a non-consu
 Add recipe (plant fiber x4 -> plant fiber bundle)
 Add recipe (stick + pile of leaves -> kindling)
 
-@TODO Add recipe (plant fiber x9 -> primitive bed) __changing this to plant fiber bundle x4__ - see above for gating research
-
 Notes: discussed making all stone age recipes hand-craftable in 2x2 grid
 
+feature/FarmSignExpansion:
+
+Convert FarmSign into an inventory, make its texture cycle through the stacks in the inventory.
+Move MCP mappings to 1.11 snapshot

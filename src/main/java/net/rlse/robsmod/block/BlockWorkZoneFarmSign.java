@@ -3,9 +3,17 @@ package net.rlse.robsmod.block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.rlse.robsmod.RobsMod;
+import net.rlse.robsmod.network.RobsModGuiHandler;
 import net.rlse.robsmod.tileentity.TEFarmSign;
 
 public class BlockWorkZoneFarmSign extends BlockWorkZoneMarker
@@ -27,8 +35,24 @@ public class BlockWorkZoneFarmSign extends BlockWorkZoneMarker
 	 */
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		TEFarmSign te = (TEFarmSign)world.getTileEntity(pos);
+		InventoryHelper.dropInventoryItems(world, pos, te);
 		super.breakBlock(world, pos, state);
-		world.removeTileEntity(pos);
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		if (stack.hasDisplayName()) {
+			((TEFarmSign)world.getTileEntity(pos)).setCustomName(stack.getDisplayName());
+		}
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (!world.isRemote) {
+			player.openGui(RobsMod.instance, RobsModGuiHandler.TE_FARM_SIGN_GUI, world, pos.getX(), pos.getY(), pos.getZ());
+		}
+		return true;
 	}
 	
 	/**
