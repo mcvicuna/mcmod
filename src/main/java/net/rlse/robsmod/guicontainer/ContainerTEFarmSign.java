@@ -1,10 +1,7 @@
 package net.rlse.robsmod.guicontainer;
 
-import net.minecraft.block.BlockDropper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ContainerDispenser;
-import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -20,7 +17,7 @@ public class ContainerTEFarmSign extends Container {
 		// 3x3 grid
 		for (int y=0; y<3; y++) {
 			for (int x=0; x<3; x++) {
-				addSlotToContainer(new Slot(teFarmSign, x+y*3, 62+x*18, 17+y*18));
+				addSlotToContainer(new ItemMarkerSlot(teFarmSign, x+y*3, 62+x*18, 17+y*18));
 			}
 		}
 		
@@ -43,6 +40,13 @@ public class ContainerTEFarmSign extends Container {
 	}
 
 	@Override
+	protected void retrySlotClick(int slotId, int clickedButton, boolean mode, EntityPlayer playerIn) {
+		// Normally re-calls slotClick, but override this because quick_move thinks that the move failed
+		System.out.println("NOOP on retrySlotClick");
+		return;
+	}
+	
+	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot) {
 		ItemStack previous = ItemStack.EMPTY;
 	    Slot slot = inventorySlots.get(fromSlot);
@@ -52,28 +56,20 @@ public class ContainerTEFarmSign extends Container {
 	        previous = current.copy();
 
 	        if (fromSlot < 9) {
-	        	// TE to Player
-	        	if (!mergeItemStack(current, 9, 45, true)) {
-	        		return ItemStack.EMPTY;
-	        	}
+	        	// TE to Player - clear the TE's slot and return nothing
+	        	slot.putStack(ItemStack.EMPTY);
+	        	return ItemStack.EMPTY;
 	        } else {
-	        	// Player to TE
-	        	if (!mergeItemStack(current, 0, 9, false)) {
-	        		return ItemStack.EMPTY;
+	        	// Player to TE - do nothing to the player's stack, but copy a one-stack of the item into the TE
+	        	for (int x=0; x<9; x++) {
+	        		Slot gridSlot = inventorySlots.get(x);
+	        		if (!gridSlot.getHasStack()) {
+	        			ItemStack indicator = new ItemStack(current.getItem(), 1);
+	        			gridSlot.putStack(indicator);
+	        			break;
+	        		}
 	        	}
 	        }
-	        
-	        if (current.isEmpty()) {
-	            slot.putStack(ItemStack.EMPTY);
-	        } else {
-	            slot.onSlotChanged();
-	        }
-
-	        if (current.getCount() == previous.getCount()) {
-	            return ItemStack.EMPTY;
-	        }
-	        
-	        slot.onTake(playerIn, current);
 	    }
 	    
 	    return previous;

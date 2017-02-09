@@ -15,13 +15,26 @@ public class TileEntityContainer extends TileEntity
 	private GenericInventory inventory;
 	private String customName;
 
+	public TileEntityContainer(GenericInventory inventory) {
+		this.inventory = inventory;
+	}
+	
 	public TileEntityContainer(int slots) {
-		inventory = new GenericInventory(this, slots);
+		this(slots, 64);
+	}
+	
+	public TileEntityContainer(int slots, int stackSize) {
+		inventory = new GenericInventory(slots, stackSize);
 		customName = null;
 	}
-
+	
 	public void setCustomName(String name) {
 		customName = name;
+	}
+	
+	@Override
+	public void onLoad() {
+		inventory.setTileEntityContainer(this);
 	}
 	
 	/**

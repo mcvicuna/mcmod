@@ -6,7 +6,7 @@ public class TEFarmSign extends TileEntityContainer
 	implements ITickable {
 
 	public TEFarmSign() {
-		super(9);
+		super(new ItemMarkerInventory(9));
 		setCustomName("Farm Work Zone");
 	}
 

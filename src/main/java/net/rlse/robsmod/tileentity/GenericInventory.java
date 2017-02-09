@@ -5,36 +5,51 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
 
 public class GenericInventory implements IInventory {
 
 	private TileEntityContainer owningEntity;
 	private NonNullList<ItemStack> inventory;
 	private int slots;
-
-	public GenericInventory(TileEntityContainer te, int slots) {
-		owningEntity = te;
+	private int stackLimit;
+	
+	public GenericInventory(int slots) {
+		this(slots, 64);
+	}
+	
+	public GenericInventory(int slots, int stackLimit) {
 		this.slots = slots;
+		this.stackLimit = stackLimit;
 		inventory = NonNullList.<ItemStack>withSize(slots, ItemStack.EMPTY);
 	}
 
+	public void setTileEntityContainer(TileEntityContainer te) {
+		owningEntity = te;
+	}
+	
 	@Override
 	public String getName() {
+		if (owningEntity == null) {
+			System.out.println("Accessing inventory before owning TE is set");
+		}
 		return owningEntity.getName();
 	}
 
 	@Override
 	public boolean hasCustomName() {
+		if (owningEntity == null) {
+			System.out.println("Accessing inventory before owning TE is set");
+		}
 		return owningEntity.hasCustomName();
 	}
 
 	@Override
 	public ITextComponent getDisplayName() {
+		if (owningEntity == null) {
+			System.out.println("Accessing inventory before owning TE is set");
+		}
 		return owningEntity.getDisplayName();
 	}
 
@@ -107,11 +122,14 @@ public class GenericInventory implements IInventory {
 
 	@Override
 	public int getInventoryStackLimit() {
-		return 64;
+		return stackLimit;
 	}
 
 	@Override
 	public void markDirty() {
+		if (owningEntity == null) {
+			System.out.println("inventory merked dirty before owning TE is set");
+		}
 		owningEntity.markDirty();
 	}
 
@@ -160,14 +178,6 @@ public class GenericInventory implements IInventory {
 		return slots;
 	}
 
-	protected void setSlotCount(int slots) {
-		// TODO Logic for resizing inventory array
-		// int oldSlots = this.slots;
-		// make new array, copy stacks
-		// drop excess stacks as ItemEntities
-		this.slots = slots;
-	}
-
 	@Override
 	public boolean isEmpty() {
 		for (ItemStack itemStack : inventory) {
@@ -181,6 +191,9 @@ public class GenericInventory implements IInventory {
 
 	@Override
 	public boolean isUsableByPlayer(EntityPlayer player) {
+		if (owningEntity == null) {
+			System.out.println("Accessing inventory before owning TE is set");
+		}
 		return (owningEntity.getWorld().getTileEntity(owningEntity.getPos()) == owningEntity)
 				&& (player.getDistanceSq(owningEntity.getPos().add(0.5, 0.5, 0.5)) <= 64);
 	}
@@ -191,5 +204,24 @@ public class GenericInventory implements IInventory {
 	
 	public void readFromNBT(NBTTagCompound nbt) {
 		ItemStackHelper.loadAllItems(nbt, inventory);
+	}
+
+	protected void setSlotCount(int slots) {
+		// TODO Logic for resizing inventory array
+		// int oldSlots = this.slots;
+		// make new array, copy stacks
+		// drop excess stacks as ItemEntities
+		this.slots = slots;
+	}
+
+	protected NonNullList<ItemStack> getInventory() {
+		return inventory;
+	}
+	
+	protected TileEntityContainer getTileEntityContainer() {
+		if (owningEntity == null) {
+			System.out.println("Accessing inventory before owning TE is set");
+		}
+		return owningEntity;
 	}
 }
